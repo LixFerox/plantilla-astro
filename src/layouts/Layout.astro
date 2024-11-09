@@ -1,0 +1,26 @@
+---
+import SEO from "../components/SEO.astro";
+
+interface Props {
+    name: string;
+    ubication: string;
+}
+const { name, ubication } = Astro.props;
+---
+
+<html lang="es">
+    <head>
+        <SEO
+            author="YourName"
+            domain="DNS"
+            website="URL_WEB"
+            page={`${name} - ${ubication}`}
+            favicon="/favicon.svg"
+            description="AVANCED_DESCRIPTION"
+        />
+        <title>{`${name} - ${ubication}`}</title>
+    </head>
+    <body class="flex flex-col min-h-screen w-screen">
+        <slot />
+    </body>
+</html>
