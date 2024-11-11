@@ -1,31 +1,34 @@
 ---
+import {
+    SITE_AUTHOR,
+    SITE_DNS,
+    SITE_WEBSITE,
+    SITE_FAVICON,
+    SITE_DESCRIPTION,
+    SITE_NAME,
+} from "../variables/config";
 interface Props {
-    author: string;
-    domain: string;
-    website: string;
     page: string;
-    favicon: string;
-    description: string;
 }
-const { author, domain, website, page, favicon, description } = Astro.props;
+const { page } = Astro.props;
 ---
 
 <meta charset="UTF-8" />
-<link rel="icon" type="image/svg+xml" href={favicon} />
+<link rel="icon" type="image/svg+xml" href={SITE_FAVICON} />
 <meta name="viewport" content="width=device-width" />
 <meta name="generator" content={Astro.generator} />
-<meta name="description" content={description} />
+<meta name="description" content={SITE_DESCRIPTION} />
 <meta name="robots" content="index, follow" />
-<meta name="author" content={author} />
+<meta name="author" content={SITE_AUTHOR} />
 <!-- OpenGraph -->
-<meta property="og:url" content={website} />
+<meta property="og:url" content={SITE_WEBSITE} />
 <meta property="og:type" content="website" />
-<meta property="og:title" content={page} />
-<meta property="og:description" content={description} />
-<meta property="og:image" content={favicon} />
+<meta property="og:title" content={`${SITE_NAME} - ${page}`} />
+<meta property="og:description" content={SITE_DESCRIPTION} />
+<meta property="og:image" content={SITE_FAVICON} />
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:domain" content={domain} />
-<meta property="twitter:url" content={website} />
-<meta property="twitter:title" content={page} />
-<meta property="twitter:description" content={description} />
+<meta property="twitter:domain" content={SITE_DNS} />
+<meta property="twitter:url" content={SITE_WEBSITE} />
+<meta property="twitter:title" content={`${SITE_NAME} - ${page}`} />
+<meta property="twitter:description" content={SITE_DESCRIPTION} />

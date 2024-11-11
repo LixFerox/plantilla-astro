@@ -1,24 +1,16 @@
 ---
 import SEO from "../components/SEO.astro";
-
+import { SITE_NAME } from "../variables/config";
 interface Props {
-    name: string;
     ubication: string;
 }
-const { name, ubication } = Astro.props;
+const { ubication } = Astro.props;
 ---
 
 <html lang="es">
     <head>
-        <SEO
-            author="YourName"
-            domain="DNS"
-            website="URL_WEB"
-            page={`${name} - ${ubication}`}
-            favicon="/favicon.svg"
-            description="AVANCED_DESCRIPTION"
-        />
-        <title>{`${name} - ${ubication}`}</title>
+        <SEO page={ubication} />
+        <title>{`${SITE_NAME} - ${ubication}`}</title>
     </head>
     <body class="flex flex-col min-h-screen w-screen">
         <slot />
