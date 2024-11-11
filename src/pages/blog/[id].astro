@@ -1,0 +1,29 @@
+---
+//LAYOUT
+import Layout from "../../layouts/Layout.astro";
+//COMPONENTS
+import Header from "../../components/Header.astro";
+import Main from "../../layouts/Main.astro";
+import Footer from "../../components/Footer.astro";
+//DATA
+import blog from "../../../data/users.json";
+//CREATE DINAMIC PAGE
+export async function getStaticPaths() {
+    return blog.map((post) => ({
+        params: { id: post.id.toString() },
+    }));
+}
+const { id } = Astro.params;
+const postObtained = blog.find((post) => post.id === parseInt(id));
+if (!postObtained) {
+    return Astro.redirect("/404");
+}
+---
+
+<Layout ubication="Home">
+    <Header />
+    <Main>
+        <p>{postObtained.title}</p>
+    </Main>
+    <Footer />
+</Layout>

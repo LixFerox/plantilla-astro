@@ -1,27 +1,27 @@
 [
     {
-        "id": 1,
-        "name": "Leanne Graham",
-        "username": "Bret"
+      "id": 1,
+      "title": "Leanne Graham",
+      "description": "Bret",
+      "pub-date": "2024-11-11",
+      "author": "Leanne Graham",
+      "category": "Tech"
     },
     {
-        "id": 2,
-        "name": "Ervin Howell",
-        "username": "Antonette"
+      "id": 2,
+      "title": "Ervin Howell",
+      "description": "Antonette",
+      "pub-date": "2024-11-08",
+      "author": "Ervin Howell",
+      "category": "Lifestyle"
     },
     {
-        "id": 3,
-        "name": "Clementine Bauch",
-        "username": "Samantha"
-    },
-    {
-        "id": 4,
-        "name": "Patricia Lebsack",
-        "username": "Karianne"
-    },
-    {
-        "id": 5,
-        "name": "Chelsey Dietrich",
-        "username": "Kamren"
+      "id": 3,
+      "title": "Clementine Bauch",
+      "description": "Samantha",
+      "pub-date": "2023-01-06",
+      "author": "Clementine Bauch",
+      "category": "Health"
     }
-]
+  ]
+  
