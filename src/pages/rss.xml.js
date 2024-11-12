@@ -8,10 +8,10 @@ export function GET(context) {
     site: context.site,
     items: post.map(p => ({
       title: p.title,
-      link: `${context.site}/blog/${p.id}`,
+      link: `${context.site}blog/${p.id}`,
       description: p.description,
       pubDate: new Date(p['pub-date']).toUTCString(),
-      guid: `${context.site}/blog/${p.id}`,
+      guid: `${context.site}blog/${p.id}`,
       author: SITE_AUTHOR,
       category: p.category,
     })),
