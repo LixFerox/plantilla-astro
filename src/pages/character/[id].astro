@@ -1,0 +1,80 @@
+---
+import { API_URL } from "astro:env/client";
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import Main from "../../layouts/Main.astro";
+
+interface Character {
+    id: number;
+    name: string;
+    status: string;
+    species: string;
+    gender: string;
+    image: string;
+}
+
+export async function getStaticPaths() {
+    const data = await fetch(`${API_URL}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
+    const response = await data.json();
+    const characters = response.results;
+
+    return characters.map((character: Character) => ({
+        params: { id: character.id.toString() },
+    }));
+}
+const { id } = Astro.params;
+const data = await fetch(`${API_URL}`, {
+    method: "GET",
+    headers: {
+        "Content-Type": "application/json",
+    },
+});
+const response = await data.json();
+const characterObtanined = response.results.find(
+    (character: Character) => character.id === parseInt(id),
+);
+---
+
+<Layout page="Personaje">
+    <Header />
+    <Main>
+        <article class="sm:w-10/12 w-full flex flex-col items-center gap-4 p-4">
+            <h2 class="sm:text-2xl text-xl font-semibold">
+                {characterObtanined.name}
+            </h2>
+            <section class="w-full flex flex-col items-center gap-4">
+                <img
+                    src={characterObtanined.image}
+                    alt={`Imagen del personaje ${characterObtanined.name}`}
+                    class="sm:w-1/4 w-1/2"
+                    loading="lazy"
+                    transition:name={`animation-${characterObtanined.id}`}
+                />
+                <p class="sm:text-base text-sm">
+                    <span class="font-semibold">Status:</span>
+                    {characterObtanined.status}
+                </p>
+                <p class="sm:text-base text-sm">
+                    <span class="font-semibold">Species:</span>
+                    {characterObtanined.species}
+                </p>
+                <p class="sm:text-base text-sm">
+                    <span class="font-semibold">Gender:</span>
+                    {characterObtanined.gender}
+                </p>
+            </section>
+            <a
+                href="/"
+                class="sm:text-base text-sm font-semibold italic rounded-md p-2 bg-blue-300"
+                >Volver</a
+            >
+        </article>
+    </Main>
+    <Footer />
+</Layout>

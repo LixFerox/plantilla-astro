@@ -1,0 +1,31 @@
+---
+import { optionSEO } from "../variables/config";
+
+interface Props {
+    page: string;
+}
+
+const { page } = Astro.props;
+---
+
+<!--Default tags -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<meta name="generator" content={Astro.generator} />
+<meta name="robots" content="index, follow" />
+<meta name="description" content={optionSEO.description} />
+<meta name="author" content={optionSEO.author} />
+<link rel="sitemap" href="/sitemap-index.xml" />
+<link rel="icon" type="image/svg+xml" href={optionSEO.favicon} />
+<!-- OpenGraph -->
+<meta property="og:url" content={optionSEO.url} />
+<meta property="og:type" content="website" />
+<meta property="og:title" content={`${optionSEO.nameWeb} - ${page}`} />
+<meta property="og:description" content={optionSEO.description} />
+<meta property="og:image" content={optionSEO.favicon} />
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:domain" content={optionSEO.domain} />
+<meta property="twitter:url" content={optionSEO.url} />
+<meta property="twitter:title" content={`${optionSEO.nameWeb} - ${page}`} />
+<meta property="twitter:description" content={optionSEO.description} />
