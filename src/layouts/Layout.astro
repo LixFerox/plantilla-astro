@@ -1,0 +1,22 @@
+---
+import { optionSEO } from "../variables/config";
+import { ClientRouter } from "astro:transitions";
+import SEO from "../components/SEO.astro";
+interface Props {
+    page: string;
+}
+
+const { page } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+    <head>
+        <SEO page={page} />
+        <title>{`${optionSEO.nameWeb} - ${page}`}</title>
+        <ClientRouter />
+    </head>
+    <body class="grid min-h-screen grid-rows-[auto,1fr,auto]">
+        <slot />
+    </body>
+</html>
